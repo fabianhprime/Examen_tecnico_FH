@@ -1,0 +1,5 @@
+modelo_skey,nombre_modelo,version,tipo,fecha_entrenamiento
+1,PD_Model,2.0,PD,8/10/2006
+2,Score_v1,2.0,Behavioral,11/17/2014
+3,LGD_v1,2.0,LGD,2/23/2010
+4,PD_v2,1.0,CreditScoring,3/21/2018

@@ -1,0 +1,4 @@
+producto_skey,cod_producto,tipo_producto,descripcion,moneda,fecha_apertura,estado_producto
+1,2,CARTERA,Integer non velit.,QUE,8/26/2019,ACTIVO
+2,8,MICROCREDITO,Vestibulum sed magna at nunc commodo placerat. Praesent blandit.,QUE,8/9/2023,INACTIVO
+3,3,BIF HIPOTECARIO,Nullam varius.,QUE,6/15/2022,ACTIVO
