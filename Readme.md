@@ -553,6 +553,7 @@ ORDER BY porcentaje_vs_promedio DESC; ``` </pre>
 - RESULTADO
 ![Flujo de control](images_doc/respuesta%206.png)
 
+
 ### 7. Optimización de Query
 <pre> ```sql -- SELECT c.nombre,
 p.tipo_producto,
@@ -569,27 +570,30 @@ ORDER BY t.fecha DESC
 CREATE INDEX idx_productos_clienteid ON productos (cliente_id);
 CREATE INDEX idx_transacciones_productoid ON transacciones (producto_id); ``` </pre>
 
-
+Observaciones:
+- Se implementaron JOINS para acelerar la busqueda
+- Se recomienda usar de indice producto al ser por lo que mas busca una persona. 
 
 ### 8. Limpieza de Datos 
-
+- Para esta respuesta se recomienda imaplementar reglas manulaes para cada campo:
+1. dpi: debe de ser de 13 digitos
 ![Flujo de control](images_doc/respuesta_inciso_8.png)
 - LIMPIEZA DPI 13 digitos en columna derivada 
 <pre> ```sql -- (LEN(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","")) == 13 && ISNUMERIC(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".",""))) ? REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","") : NULL(DT_WSTR,13)
  ``` </pre>
 
- - LIMPIEZA DPI 13 digitos en columna derivada 
-<pre> ```sql -- (LEN(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","")) == 13 && ISNUMERIC(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".",""))) ? REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","") : NULL(DT_WSTR,13)
+ - LIMPIEZA NIT CON O SIN GUION 7 - 9 digitos
+<pre> ```sql -- (LEN(REPLACE(TRIM(nit),"-","")) BETWEEN 7 AND 9) ? UPPER(REPLACE(TRIM(nit),"-","")) : NULL(DT_WSTR,15)
  ``` </pre>
 
 
- - LIMPIEZA DPI 13 digitos en columna derivada 
+ - LIMPIEZA telefono Solo numeros de 8-9 digitos
 <pre> ```sql -- (LEN(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","")) == 13 && ISNUMERIC(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".",""))) ? REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","") : NULL(DT_WSTR,13)
  ``` </pre>
 
- - LIMPIEZA DPI 13 digitos en columna derivada 
-<pre> ```sql -- (LEN(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","")) == 13 && ISNUMERIC(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".",""))) ? REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","") : NULL(DT_WSTR,13)
+ - LIMPIEZA Direccion solo se limpian a espacios extra
+<pre> ```sql --REPLACE(REPLACE(REPLACE(TRIM(direccion),CHAR(9),""),"  "," "),"--","")
  ``` </pre>
 
 - RESULTADO
-![Flujo de control](images_doc/respuesta_inciso_8.pngg)
+![Flujo de control](images_doc/respuesta_inciso_8.png)
