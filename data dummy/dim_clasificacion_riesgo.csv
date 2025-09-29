@@ -1,6 +1,6 @@
 clasificacion_riesgo_skey,codigo_riesgo,descripcion,porcentaje_provision,vigente_desde,vigente_hasta
-1,A,In quis justo. Maecenas rhoncus aliquam lacus.,0.65753,10/9/2021,1/14/2025
-2,B,"Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla.",0.36665,4/15/2018,10/3/2024
-3,C,"Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.",0.12309,5/12/2008,2/22/2025
-4,D,Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat.,0.67801,8/7/2002,4/18/2025
-5,E,"Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",0.93957,6/25/2008,11/25/2024
+1,A,"In quis justo.",0.65753,10/9/2021,1/14/2025
+2,B,"Nam dui. Pr",0.36665,4/15/2018,10/3/2024
+3,C,"Fusce congue",0.12309,5/12/2008,2/22/2025
+4,D,"Vivamus vel null".,0.67801,8/7/2002,4/18/2025
+5,E,"Integer pede",0.93957,6/25/2008,11/25/2024
