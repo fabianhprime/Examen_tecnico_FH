@@ -407,9 +407,10 @@ CREATE TABLE dbr_evaluacion (
 CREATE INDEX IX_dbr_evaluacion_modelo_fecha ON dbr_evaluacion(modelo_Skey, fecha_evaluacion_Skey); ``` </pre>
 
 ### 3. Creación de ETL en SSIS
-Se creo el siguiente proceso en SSIS, creando el flujo donde primero se llenan las tablas dimensionales y de ultimo las tablas de hechos, esto por las llaves primarias y foraneas
-![Flujo de control](images_doc/Ejecucion%20paso%203.png)
+- Se creo el siguiente proceso en SSIS, creando el flujo donde primero se llenan las tablas dimensionales y de ultimo las tablas de hechos, esto por las llaves primarias y foraneas
 - Para las columnas con fechas se crearon columnas derivadas dado el formato, creando un proceso ETL
+![Flujo de control](images_doc/Ejecucion%20paso%203.png)
+- Version Visual Studio y SSIS
 ![version](images_doc/version%20visual_SSIS.png)
 
 ### 4. Consultas de Validación
@@ -452,9 +453,123 @@ WHERE dc.cod_cliente = 7449522859
 ORDER BY df.fecha ASC; ``` </pre>
 
 
-
-
 ### 5. Consulta Compleja de Análisis
-### 6. Detección de Anomalías (
+<pre> ```sql -- WITH saldo_mensual AS (
+    SELECT 
+    cr.cliente_Skey,
+    cli.nombre_completo,
+    p.descripcion AS producto,
+    r.descripcion AS clasificacion_riesgo,
+    f.anio,
+    f.mes,
+    SUM(cr.saldo_capital) AS saldo_mensual
+    FROM dbr_colocacion_riesgo cr
+    INNER JOIN dm_cliente cli ON cr.cliente_Skey = cli.cliente_Skey
+    INNER JOIN dm_producto p ON cr.producto_Skey = p.producto_Skey
+    INNER JOIN dm_clasificacion_riesgo r ON cr.riesgo_Skey = r.clasificacion_riesgo_Skey
+    INNER JOIN dm_fecha f ON cr.fecha_cierre_Skey = f.fecha_Skey
+    GROUP BY cr.cliente_Skey, cli.nombre_completo, p.descripcion, r.descripcion, f.anio, f.mes
+),
+crecimiento AS (
+    SELECT 
+        cliente_Skey,
+        nombre_completo,
+        producto,
+        clasificacion_riesgo,
+        anio,
+        mes,
+        saldo_mensual,
+        LAG(saldo_mensual) OVER (PARTITION BY cliente_Skey ORDER BY anio, mes) AS saldo_anterior,
+        CASE WHEN LAG(saldo_mensual) OVER (PARTITION BY cliente_Skey ORDER BY anio, mes) = 0 
+        THEN NULL
+         ELSE (saldo_mensual - LAG(saldo_mensual) OVER (PARTITION BY cliente_Skey ORDER BY anio, mes)) * 1.0 / LAG(saldo_mensual) OVER (PARTITION BY cliente_Skey ORDER BY anio, mes) * 100
+        END AS crecimiento_pct
+    FROM saldo_mensual
+),
+saldo_total_cliente AS (
+    SELECT 
+    cliente_Skey,
+    nombre_completo,
+    producto,
+    clasificacion_riesgo,
+    SUM(saldo_mensual) AS saldo_total,
+    AVG(crecimiento_pct) AS crecimiento_promedio
+    FROM crecimiento
+    GROUP BY cliente_Skey, nombre_completo, producto, clasificacion_riesgo
+)
+SELECT TOP 10 *
+FROM saldo_total_cliente
+ORDER BY saldo_total DESC;; ``` </pre>
+
+### 6. Detección de Anomalías 
+<pre> ```sql --WITH movimientos_recientes AS (
+    SELECT 
+    cliente_Skey,
+    SUM(monto) AS total_30dias
+    FROM dbr_movimientos_colocacion_riesgo m
+    INNER JOIN dm_fecha f ON m.fecha_cierre_Skey = f.fecha_Skey
+    WHERE f.fecha >= DATEADD(DAY, -30, GETDATE())  -- últimos 30 días
+    GROUP BY cliente_Skey
+),
+promedio_historico AS (
+    SELECT 
+    cliente_Skey,
+    AVG(monto_mes) AS promedio_historico
+    FROM (
+        SELECT 
+            cliente_Skey,
+            f.anio,
+            f.mes,
+            SUM(monto) AS monto_mes
+    FROM dbr_movimientos_colocacion_riesgo m
+    INNER JOIN dm_fecha f ON m.fecha_cierre_Skey = f.fecha_Skey
+    GROUP BY cliente_Skey, f.anio, f.mes
+    ) t
+    GROUP BY cliente_Skey
+)
+SELECT 
+r.cliente_Skey,
+c.nombre_completo,
+r.total_30dias,
+h.promedio_historico,
+CAST((r.total_30dias*1.0 / h.promedio_historico) * 100 AS DECIMAL(10,2)) AS porcentaje_vs_promedio
+FROM movimientos_recientes r
+INNER JOIN promedio_historico h ON r.cliente_Skey = h.cliente_Skey
+INNER JOIN dm_cliente c ON r.cliente_Skey = c.cliente_Skey
+WHERE r.total_30dias > 3 * h.promedio_historico  -- más del 300%
+ORDER BY porcentaje_vs_promedio DESC; ``` </pre>
+
 ### 7. Optimización de Query
-### 8. Limpieza de Datos (
+<pre> ```sql -- SELECT c.nombre,
+p.tipo_producto,
+t.fecha,
+t.monto
+FROM transacciones t
+LEFT JOIN productos p ON p.producto_id = t.producto_id
+LEFT JOIN clientes c ON c.cliente_id = p.cliente_id
+WHERE t.fecha >= '2024-01-01' 
+	AND t.monto > 5000
+ORDER BY t.fecha DESC
+
+-- SUGERENCIA INDICE PRODUCTO
+CREATE INDEX idx_productos_clienteid ON productos (cliente_id);
+CREATE INDEX idx_transacciones_productoid ON transacciones (producto_id); ``` </pre>
+
+### 8. Limpieza de Datos 
+- LIMPIEZA DPI 13 digitos en columna derivada 
+<pre> ```sql -- (LEN(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","")) == 13 && ISNUMERIC(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".",""))) ? REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","") : NULL(DT_WSTR,13)
+ ``` </pre>
+
+ - LIMPIEZA DPI 13 digitos en columna derivada 
+<pre> ```sql -- (LEN(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","")) == 13 && ISNUMERIC(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".",""))) ? REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","") : NULL(DT_WSTR,13)
+ ``` </pre>
+
+
+ - LIMPIEZA DPI 13 digitos en columna derivada 
+<pre> ```sql -- (LEN(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","")) == 13 && ISNUMERIC(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".",""))) ? REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","") : NULL(DT_WSTR,13)
+ ``` </pre>
+
+ - LIMPIEZA DPI 13 digitos en columna derivada 
+<pre> ```sql -- (LEN(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","")) == 13 && ISNUMERIC(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".",""))) ? REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","") : NULL(DT_WSTR,13)
+ ``` </pre>
+
