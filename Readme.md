@@ -208,3 +208,11 @@ Resultados de evaluaciones de riesgo de clientes.
 
 **Índices:**  
 - `IX_dbr_evaluacion_modelo_fecha` 
+
+
+
+# Solucion examen tecnico analista de datos FABIAN ANTONIO HERNANDEZ VENTURA 
+
+### 1. Diseño de Modelo Conceptual y Entidad Relación
+Se adjunta imagen de diagrama entidad relacion 
+![Diagrama ER completo]("C:\Users\fahv1\OneDrive\Escritorio\Examen_tecnico_FH\images_doc\Esquemacompleto.png")
