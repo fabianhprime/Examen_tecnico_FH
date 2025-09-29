@@ -513,6 +513,8 @@ ORDER BY saldo_total DESC;; ``` </pre>
 ![Flujo de control](images_doc/respuesta_inciso_5.png)
 
 ### 6. Detección de Anomalías 
+- Para esta consulta, primero se obtienen todos los movimientos de los últimos 30 días y se agrupan por cliente. Luego, se calcula el promedio histórico de transacciones de cada cliente. Finalmente, se identifican y muestran aquellos clientes que presentan mayores anomalías en su comportamiento transaccional.
+
 <pre> ```sql --WITH movimientos_recientes AS (
     SELECT 
     cliente_Skey,
@@ -577,7 +579,6 @@ Observaciones:
 ### 8. Limpieza de Datos 
 - Para esta respuesta se recomienda imaplementar reglas manulaes para cada campo:
 1. dpi: debe de ser de 13 digitos
-![Flujo de control](images_doc/respuesta_inciso_8.png)
 - LIMPIEZA DPI 13 digitos en columna derivada 
 <pre> ```sql -- (LEN(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","")) == 13 && ISNUMERIC(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".",""))) ? REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","") : NULL(DT_WSTR,13)
  ``` </pre>
@@ -594,6 +595,5 @@ Observaciones:
  - LIMPIEZA Direccion solo se limpian a espacios extra
 <pre> ```sql --REPLACE(REPLACE(REPLACE(TRIM(direccion),CHAR(9),""),"  "," "),"--","")
  ``` </pre>
-
 - RESULTADO
 ![Flujo de control](images_doc/respuesta_inciso_8.png)
