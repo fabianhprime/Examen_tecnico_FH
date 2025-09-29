@@ -215,4 +215,4 @@ Resultados de evaluaciones de riesgo de clientes.
 
 ### 1. Diseño de Modelo Conceptual y Entidad Relación
 Se adjunta imagen de diagrama entidad relacion 
-![Diagrama ER completo]("../images_doc/Esquemacompleto.png")
+![Diagrama ER completo]("images_doc/Esquemacompleto.png")
