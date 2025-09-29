@@ -427,6 +427,9 @@ LEFT JOIN chn_dw.dbo.dm_producto dp ON dp.producto_Skey = dbcr.producto_Skey
 WHERE dias_mora > 0 
 ORDER BY dc.cod_cliente; ``` </pre>
 
+- RESULTADO
+![Flujo de control](images_doc/respuesta%204_1.png)
+
 2. Calcular el saldo total por tipo de cliente (individual vs jurídico).
 
 <pre> ```sql -- SELECT
@@ -436,6 +439,9 @@ FROM chn_dw.dbo.dbr_colocacion_riesgo dbcr
 LEFT JOIN chn_dw.dbo.dm_cliente dc ON dc.cliente_Skey = dbcr.cliente_Skey
 GROUP BY dc.tipo_cliente;
  ``` </pre>
+
+ - RESULTADO
+![Flujo de control](images_doc/respuesta%204_2.png
 
 3. Mostrar el histórico de clasificaciones de riesgo de un cliente específico.
 <pre> ```sql -- SELECT  dc.cod_cliente,
@@ -451,7 +457,8 @@ LEFT JOIN chn_dw.dbo.dm_fecha df ON df.fecha_Skey = dev.fecha_evaluacion_Skey
 LEFT JOIN chn_dw.dbo.dm_cliente dc ON dc.cliente_Skey = dev.cliente_Skey
 WHERE dc.cod_cliente = 7449522859 
 ORDER BY df.fecha ASC; ``` </pre>
-
+ - RESULTADO
+![Flujo de control](images_doc/respuesta%204_3png.png.png
 
 ### 5. Consulta Compleja de Análisis
 <pre> ```sql -- WITH saldo_mensual AS (
@@ -501,6 +508,10 @@ SELECT TOP 10 *
 FROM saldo_total_cliente
 ORDER BY saldo_total DESC;; ``` </pre>
 
+
+- RESULTADO
+![Flujo de control](images_doc/respuesta_inciso_5.png)
+
 ### 6. Detección de Anomalías 
 <pre> ```sql --WITH movimientos_recientes AS (
     SELECT 
@@ -539,6 +550,9 @@ INNER JOIN dm_cliente c ON r.cliente_Skey = c.cliente_Skey
 WHERE r.total_30dias > 3 * h.promedio_historico  -- más del 300%
 ORDER BY porcentaje_vs_promedio DESC; ``` </pre>
 
+- RESULTADO
+![Flujo de control](images_doc/respuesta%206.png)
+
 ### 7. Optimización de Query
 <pre> ```sql -- SELECT c.nombre,
 p.tipo_producto,
@@ -555,7 +569,11 @@ ORDER BY t.fecha DESC
 CREATE INDEX idx_productos_clienteid ON productos (cliente_id);
 CREATE INDEX idx_transacciones_productoid ON transacciones (producto_id); ``` </pre>
 
+
+
 ### 8. Limpieza de Datos 
+
+![Flujo de control](images_doc/respuesta_inciso_8.png)
 - LIMPIEZA DPI 13 digitos en columna derivada 
 <pre> ```sql -- (LEN(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","")) == 13 && ISNUMERIC(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".",""))) ? REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","") : NULL(DT_WSTR,13)
  ``` </pre>
@@ -573,3 +591,5 @@ CREATE INDEX idx_transacciones_productoid ON transacciones (producto_id); ``` </
 <pre> ```sql -- (LEN(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","")) == 13 && ISNUMERIC(REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".",""))) ? REPLACE(REPLACE(REPLACE(TRIM(dpi),"-","")," ",""),".","") : NULL(DT_WSTR,13)
  ``` </pre>
 
+- RESULTADO
+![Flujo de control](images_doc/respuesta_inciso_8.pngg)
