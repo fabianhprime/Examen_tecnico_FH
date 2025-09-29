@@ -229,7 +229,15 @@ Esquema para dbr_movimientos_colocacion_riesgo
 ![Diagrama ER dbr_movimientos_colocacion_riesgo](images_doc/dbr_movimientos_colocacion_riesgo.png)
 
 ### 2. Scripts DDL
+Observación general:
+- Se busco no tener nulos al maximo, si es texto es PD y si es fecha es 1999-01-01 segun estandar aprendido en gerencia. 
+- Todos los indices son recomenados en campos de mayor busqueda
 
+Observaciones por tabla: 
+- dm_cliente: se agrego el campo vigente_hasta y vigente_desde esto para tener un mapeo de cambio en algun segmento o cualquier otro, algo que seria util implementar dado el proyecto de matriz bancaria que tiene la gerencia.
+- dm_clasificacion_riesgo: campo porcentaje provision es dado que la SIB indica que el banco tiene que tener cierta cantidad en caso no se cubra la deuda.
+- dm_modelo_evaluacion: Se considero pensando en modelos futuros implementados por la gerencia por ejemplo score crediticio
+- Para las demas tablas hay mas informacion de los campos en la documentacion previa y se busco seguir el estandar que maneja la gerencia
 
 <pre> ```sql -- 
 CREATE TABLE dm_cliente (
