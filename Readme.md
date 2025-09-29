@@ -441,7 +441,7 @@ GROUP BY dc.tipo_cliente;
  ``` </pre>
 
  - RESULTADO
-![Flujo de control](images_doc/respuesta%204_2.png
+![Flujo de control](images_doc/respuesta%204_2.png)
 
 3. Mostrar el histórico de clasificaciones de riesgo de un cliente específico.
 <pre> ```sql -- SELECT  dc.cod_cliente,
@@ -458,7 +458,7 @@ LEFT JOIN chn_dw.dbo.dm_cliente dc ON dc.cliente_Skey = dev.cliente_Skey
 WHERE dc.cod_cliente = 7449522859 
 ORDER BY df.fecha ASC; ``` </pre>
  - RESULTADO
-![Flujo de control](images_doc/respuesta%204_3png.png.png
+![Flujo de control](images_doc/respuesta%204_3png.png)
 
 ### 5. Consulta Compleja de Análisis
 <pre> ```sql -- WITH saldo_mensual AS (
