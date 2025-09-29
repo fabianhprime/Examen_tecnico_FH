@@ -11,8 +11,8 @@
   DTS:LocaleID="4106"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="63"
-  DTS:VersionGUID="{470D4A48-4D7F-44D4-8703-5EC1FFD1C629}">
+  DTS:VersionBuild="65"
+  DTS:VersionGUID="{248A739A-EEC4-473C-A392-91299834B1A1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -7087,13 +7087,25 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="226.4,41.6"
-          Id="Package\Tarea Flujo de datos dm_cliente"
-          TopLeft="59.1666634339426,10.3999999276797" />
+          Size="353.6,41.6"
+          Id="Package\Tarea Flujo de datos 1 dbr_movimientos_colocacion_riesgo"
+          TopLeft="486.666640076373,186.333332037595" />
+        <NodeLayout
+          Size="280.8,41.6"
+          Id="Package\Tarea Flujo de datos dbr_colocacion_riesgo"
+          TopLeft="321.666649091576,0.866666660639964" />
+        <NodeLayout
+          Size="247.2,41.6"
+          Id="Package\Tarea Flujo de datos dbr_evaluacion"
+          TopLeft="474.999974047145,110.933332561917" />
         <NodeLayout
           Size="289.6,41.6"
           Id="Package\Tarea Flujo de datos dim_clasificacion_riesgo"
           TopLeft="30.8333316486743,79.7333327788777" />
+        <NodeLayout
+          Size="226.4,41.6"
+          Id="Package\Tarea Flujo de datos dm_cliente"
+          TopLeft="59.1666634339426,10.3999999276797" />
         <NodeLayout
           Size="245.6,41.6"
           Id="Package\Tarea Flujo de datos dm_colocacion"
@@ -7114,18 +7126,6 @@
           Size="235.2,41.6"
           Id="Package\Tarea Flujo de datos dm_sucursal"
           TopLeft="271.666651823455,423.399997306069" />
-        <NodeLayout
-          Size="280.8,41.6"
-          Id="Package\Tarea Flujo de datos dbr_colocacion_riesgo"
-          TopLeft="321.666649091576,0.866666660639964" />
-        <NodeLayout
-          Size="247.2,41.6"
-          Id="Package\Tarea Flujo de datos dbr_evaluacion"
-          TopLeft="474.999974047145,110.933332561917" />
-        <NodeLayout
-          Size="353.6,41.6"
-          Id="Package\Tarea Flujo de datos 1 dbr_movimientos_colocacion_riesgo"
-          TopLeft="486.666640076373,186.333332037595" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
           TopLeft="173.999997541308,51.9999999276797">
@@ -7418,70 +7418,32 @@
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Tarea Flujo de datos dm_cliente">
+    design-time-name="Package\Tarea Flujo de datos 1 dbr_movimientos_colocacion_riesgo">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="188.8,41.6"
-          Id="Package\Tarea Flujo de datos dm_cliente\Origen de archivo plano"
-          TopLeft="82.9999987632036,89.9999986588955" />
+          Id="Package\Tarea Flujo de datos 1 dbr_movimientos_colocacion_riesgo\Origen de archivo plano"
+          TopLeft="481.99999281764,164.999997541308" />
         <NodeLayout
           Size="168.8,41.6"
-          Id="Package\Tarea Flujo de datos dm_cliente\Destino de OLE DB"
-          TopLeft="112.999998316169,257.9999961555" />
-        <NodeLayout
-          Size="162.4,41.6"
-          Id="Package\Tarea Flujo de datos dm_cliente\Columna derivada"
-          TopLeft="119.999998211861,172.999997422099" />
+          Id="Package\Tarea Flujo de datos 1 dbr_movimientos_colocacion_riesgo\Destino de OLE DB"
+          TopLeft="492.999992653728,261.999996095896" />
         <EdgeLayout
-          Id="Package\Tarea Flujo de datos dm_cliente.Paths[Salida de origen de archivo plano]"
-          TopLeft="177.399998763204,131.599998658895">
+          Id="Package\Tarea Flujo de datos 1 dbr_movimientos_colocacion_riesgo.Paths[Salida de origen de archivo plano]"
+          TopLeft="576.899992735684,206.599997541308">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="23.799999448657,41.3999987632037"
+              EndConnector="0,55.3999985545873"
               Start="0,0"
-              End="23.799999448657,33.8999987632037">
+              End="0,47.8999985545873">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.6999993816018" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.6999993816018"
-                    Point2="0,20.6999993816018"
-                    Point3="4,20.6999993816018" />
-                  <mssgle:LineSegment
-                    End="19.799999448657,20.6999993816018" />
-                  <mssgle:CubicBezierSegment
-                    Point1="19.799999448657,20.6999993816018"
-                    Point2="23.799999448657,20.6999993816018"
-                    Point3="23.799999448657,24.6999993816018" />
-                  <mssgle:LineSegment
-                    End="23.799999448657,33.8999987632037" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos dm_cliente.Paths[Salida de columna derivada]"
-          TopLeft="199.299998264015,214.599997422099">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43.3999987334013"
-              Start="0,0"
-              End="0,35.8999987334013">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.8999987334013" />
+                    End="0,47.8999985545873" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7494,7 +7456,109 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos dm_cliente\Destino de OLE DB">
+    design-time-name="Package\Tarea Flujo de datos 1 dbr_movimientos_colocacion_riesgo\Destino de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Tarea Flujo de datos dbr_colocacion_riesgo">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="188.8,41.6"
+          Id="Package\Tarea Flujo de datos dbr_colocacion_riesgo\Origen de archivo plano"
+          TopLeft="321.999995201826,117.999998241663" />
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\Tarea Flujo de datos dbr_colocacion_riesgo\Destino de OLE DB"
+          TopLeft="337.999994963408,219.999996721745" />
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos dbr_colocacion_riesgo.Paths[Salida de origen de archivo plano]"
+          TopLeft="419.399995082617,159.599998241663">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.3999984800815"
+              Start="0,0"
+              End="0,52.8999984800815">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.8999984800815" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos dbr_colocacion_riesgo\Destino de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Tarea Flujo de datos dbr_evaluacion">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="188.8,41.6"
+          Id="Package\Tarea Flujo de datos dbr_evaluacion\Origen de archivo plano"
+          TopLeft="448.999993309379,156.999997660518" />
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\Tarea Flujo de datos dbr_evaluacion\Destino de OLE DB"
+          TopLeft="463.999993085861,264.999996051192" />
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos dbr_evaluacion.Paths[Salida de origen de archivo plano]"
+          TopLeft="545.89999319762,198.599997660518">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,66.3999983906746"
+              Start="0,0"
+              End="0,58.8999983906746">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.8999983906746" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos dbr_evaluacion\Destino de OLE DB">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7596,6 +7660,95 @@
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Tarea Flujo de datos dim_clasificacion_riesgo\Destino de OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Tarea Flujo de datos dm_cliente">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\Tarea Flujo de datos dm_cliente\Destino de OLE DB"
+          TopLeft="112.999998316169,257.9999961555" />
+        <NodeLayout
+          Size="188.8,41.6"
+          Id="Package\Tarea Flujo de datos dm_cliente\Origen de archivo plano"
+          TopLeft="82.9999987632036,89.9999986588955" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Tarea Flujo de datos dm_cliente\Columna derivada"
+          TopLeft="119.999998211861,172.999997422099" />
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos dm_cliente.Paths[Salida de columna derivada]"
+          TopLeft="199.299998264015,214.599997422099">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.399998733401"
+              Start="0,0"
+              End="0,35.899998733401">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.899998733401" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tarea Flujo de datos dm_cliente.Paths[Salida de origen de archivo plano]"
+          TopLeft="177.399998763204,131.599998658896">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23.7999994486574,41.3999987632035"
+              Start="0,0"
+              End="23.7999994486574,33.8999987632035">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.6999993816017" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.6999993816017"
+                    Point2="0,20.6999993816017"
+                    Point3="4,20.6999993816017" />
+                  <mssgle:LineSegment
+                    End="19.7999994486574,20.6999993816017" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.7999994486574,20.6999993816017"
+                    Point2="23.7999994486574,20.6999993816017"
+                    Point3="23.7999994486574,24.6999993816017" />
+                  <mssgle:LineSegment
+                    End="23.7999994486574,33.8999987632035" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tarea Flujo de datos dm_cliente\Destino de OLE DB">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7913,159 +8066,6 @@
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Tarea Flujo de datos dm_sucursal\Destino de OLE DB">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Tarea Flujo de datos dbr_colocacion_riesgo">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="188.8,41.6"
-          Id="Package\Tarea Flujo de datos dbr_colocacion_riesgo\Origen de archivo plano"
-          TopLeft="321.999995201826,117.999998241663" />
-        <NodeLayout
-          Size="168.8,41.6"
-          Id="Package\Tarea Flujo de datos dbr_colocacion_riesgo\Destino de OLE DB"
-          TopLeft="337.999994963408,219.999996721745" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos dbr_colocacion_riesgo.Paths[Salida de origen de archivo plano]"
-          TopLeft="419.399995082617,159.599998241663">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60.3999984800815"
-              Start="0,0"
-              End="0,52.8999984800815">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.8999984800815" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos dbr_colocacion_riesgo\Destino de OLE DB">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Tarea Flujo de datos dbr_evaluacion">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="188.8,41.6"
-          Id="Package\Tarea Flujo de datos dbr_evaluacion\Origen de archivo plano"
-          TopLeft="448.999993309379,156.999997660518" />
-        <NodeLayout
-          Size="168.8,41.6"
-          Id="Package\Tarea Flujo de datos dbr_evaluacion\Destino de OLE DB"
-          TopLeft="463.999993085861,264.999996051192" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos dbr_evaluacion.Paths[Salida de origen de archivo plano]"
-          TopLeft="545.89999319762,198.599997660518">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,66.3999983906746"
-              Start="0,0"
-              End="0,58.8999983906746">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,58.8999983906746" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos dbr_evaluacion\Destino de OLE DB">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Tarea Flujo de datos 1 dbr_movimientos_colocacion_riesgo">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="188.8,41.6"
-          Id="Package\Tarea Flujo de datos 1 dbr_movimientos_colocacion_riesgo\Origen de archivo plano"
-          TopLeft="481.99999281764,164.999997541308" />
-        <NodeLayout
-          Size="168.8,41.6"
-          Id="Package\Tarea Flujo de datos 1 dbr_movimientos_colocacion_riesgo\Destino de OLE DB"
-          TopLeft="492.999992653728,261.999996095896" />
-        <EdgeLayout
-          Id="Package\Tarea Flujo de datos 1 dbr_movimientos_colocacion_riesgo.Paths[Salida de origen de archivo plano]"
-          TopLeft="576.899992735684,206.599997541308">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55.3999985545873"
-              Start="0,0"
-              End="0,47.8999985545873">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.8999985545873" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Tarea Flujo de datos 1 dbr_movimientos_colocacion_riesgo\Destino de OLE DB">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
