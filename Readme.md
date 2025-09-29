@@ -461,6 +461,10 @@ ORDER BY df.fecha ASC; ``` </pre>
 ![Flujo de control](images_doc/respuesta%204_3png.png)
 
 ### 5. Consulta Compleja de Análisis
+
+- 1: obtenemos el saldo ttoal que tenia el cliente por mes
+- 2: se obtiene la evolucion del saldo cada mes mediante lag
+- 3: Se suman los saldos y obtenemos los porcentajes de crecimiento
 <pre> ```sql -- WITH saldo_mensual AS (
     SELECT 
     cr.cliente_Skey,
